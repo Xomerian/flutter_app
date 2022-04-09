@@ -64,26 +64,13 @@ class MainPage extends StatefulWidget {
 class _MainState extends State<MainPage> {
   int _counter = 0;
   int _selectedPage = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Alert',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Calculator',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Shop',
-      style: optionStyle,
-    ),
-  ];
   void _onItemTapped(int index) {
     setState(() {
       _selectedPage = index;
     });
+    if (index==0) _navigateToAlertScreen(context);
+      else if(index==1) _navigateToCalculatorScreen(context);
+      else _navigateToShopScreen(context);
   }
   void _incrementCounter() {
     setState(() {
@@ -137,43 +124,22 @@ class _MainState extends State<MainPage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.amber,
-              ),
-              onPressed: () {_navigateToLoginScreen(context); },
-              child: Text('Alert page'),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.amber,
-              ),
-              onPressed: () {_navigateToCalculatorScreen(context); },
-              child: Text('Calculator page'),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.amber,
-              ),
-              onPressed: () {_navigateToShopScreen(context); },
-              child: Text('Shop page'),
-            ),
           ],
         ),
 
       ),bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.warning),
+            label: 'Alert',
             ),
             BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.add_chart),
+            label: 'Calculator',
             ),
             BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.shop),
+            label: 'Shop',
             ),
             ],
             currentIndex: _selectedPage,
@@ -188,7 +154,7 @@ class _MainState extends State<MainPage> {
 
     );
   }
-  void _navigateToLoginScreen(BuildContext context) {
+  void _navigateToAlertScreen(BuildContext context) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => AlertPage()));
   }
