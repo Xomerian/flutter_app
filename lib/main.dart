@@ -22,7 +22,21 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+          primarySwatch: Colors.amber,
+          accentColor: Colors.amber,
+          brightness: Brightness.light,
+          hoverColor: Colors.yellow,
+          backgroundColor: Colors.white,
+          textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.black)),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.amber,
+        accentColor: Colors.amber,
+        hoverColor: Colors.yellow,
+        backgroundColor: Colors.black45,
+        textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.white)),
+
       ),
       home: const LoginPage(),
     );
@@ -49,7 +63,28 @@ class MainPage extends StatefulWidget {
 
 class _MainState extends State<MainPage> {
   int _counter = 0;
-
+  int _selectedPage = 0;
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Alert',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Calculator',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Shop',
+      style: optionStyle,
+    ),
+  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedPage = index;
+    });
+  }
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -104,21 +139,46 @@ class _MainState extends State<MainPage> {
             ),
             TextButton(
               style: TextButton.styleFrom(
-                primary: Colors.blue,
+                primary: Colors.amber,
               ),
               onPressed: () {_navigateToLoginScreen(context); },
-              child: Text('Login page'),
+              child: Text('Alert page'),
             ),
             TextButton(
               style: TextButton.styleFrom(
-                primary: Colors.blue,
+                primary: Colors.amber,
               ),
               onPressed: () {_navigateToCalculatorScreen(context); },
               child: Text('Calculator page'),
             ),
+            TextButton(
+              style: TextButton.styleFrom(
+                primary: Colors.amber,
+              ),
+              onPressed: () {_navigateToShopScreen(context); },
+              child: Text('Shop page'),
+            ),
           ],
         ),
 
+      ),bottomNavigationBar: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            ),
+            BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+            ),
+            BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+            ),
+            ],
+            currentIndex: _selectedPage,
+            selectedItemColor: Colors.amber[800],
+            onTap: _onItemTapped,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -135,6 +195,10 @@ class _MainState extends State<MainPage> {
   void _navigateToCalculatorScreen(BuildContext context) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => Calculator()));
+  }
+  void _navigateToShopScreen(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => ShopPage()));
   }
 }
 
@@ -161,9 +225,9 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Assignment 2',
+                      'Project',
                       style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.amber,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
@@ -228,59 +292,6 @@ class _LoginPageState extends State<LoginPage> {
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => MainPage()));
-  }
-}
-
-class AlertPage extends StatefulWidget {
-  const AlertPage({Key? key}) : super(key: key);
-
-  @override
-  State<AlertPage> createState() => _AlertState();
-}
-
-class _AlertState extends State<AlertPage> {
-  TextEditingController textController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text('Incoming')),
-        body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextField(
-                    controller: textController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Enter a Text',
-                    )),
-                ElevatedButton(
-                  child: Text(
-                    'Alert page',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          // Retrieve the text the that user has entered by using the
-                          // TextEditingController.
-                          content: Text(textController.text),
-                        );
-                      },
-                    );
-                    //onPressed: () {
-                    /*Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyLayout()),*/
-                    //showAlertDialog(context);
-                  },
-                ),
-
-              ]),
-        ));
   }
 }
 
@@ -526,5 +537,84 @@ class _CalculatorState extends State<Calculator> {
     }
     return result;
   }
+}
 
+
+class AlertPage extends StatefulWidget {
+  const AlertPage({Key? key}) : super(key: key);
+
+  @override
+  State<AlertPage> createState() => _AlertState();
+}
+
+class _AlertState extends State<AlertPage> {
+  TextEditingController textController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('Incoming')),
+        body: Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextField(
+                    controller: textController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Enter a Text',
+                    )),
+                ElevatedButton(
+                  child: Text(
+                    'Alert page',
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          // Retrieve the text the that user has entered by using the
+                          // TextEditingController.
+                          content: Text(textController.text),
+                        );
+                      },
+                    );
+                    //onPressed: () {
+                    /*Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyLayout()),*/
+                    //showAlertDialog(context);
+                  },
+                ),
+
+              ]),
+        ));
+  }
+}
+
+class ShopPage extends StatefulWidget {
+  const ShopPage({Key? key}) : super(key: key);
+
+  @override
+  State<ShopPage> createState() => _ShopState();
+}
+
+class _ShopState extends State<ShopPage> {
+  TextEditingController textController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('Shop')),
+        body: Container(
+            constraints: BoxConstraints.expand(
+              height: Theme.of(context).textTheme.headline4!.fontSize! * 1.1,
+            ),
+            child:
+              Text('Hello World',),
+            color: Theme.of(context).colorScheme.secondary,
+            ),
+        );
+  }
 }
