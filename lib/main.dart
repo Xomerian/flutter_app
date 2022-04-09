@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter assignement 2',
+      title: 'Flutter project',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,13 +24,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Assignement 2'),
+      home: const LoginPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -41,13 +41,13 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final String title = 'Flutter Project';
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MainPage> createState() => _MainState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainState extends State<MainPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   void _navigateToLoginScreen(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => LoginPage()));
+        .push(MaterialPageRoute(builder: (context) => AlertPage()));
   }
   void _navigateToCalculatorScreen(BuildContext context) {
     Navigator.of(context)
@@ -227,18 +227,18 @@ class _LoginPageState extends State<LoginPage> {
 
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => SecondPage()));
+        .push(MaterialPageRoute(builder: (context) => MainPage()));
   }
 }
 
-class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key}) : super(key: key);
+class AlertPage extends StatefulWidget {
+  const AlertPage({Key? key}) : super(key: key);
 
   @override
-  State<SecondPage> createState() => _SecondPageState();
+  State<AlertPage> createState() => _AlertState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _AlertState extends State<AlertPage> {
   TextEditingController textController = TextEditingController();
 
   @override
