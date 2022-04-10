@@ -226,10 +226,8 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     //Calculator
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('Calculator'),
-        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 5),
