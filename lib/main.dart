@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/bincalc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -94,7 +95,9 @@ class _MainState extends State<MainPage> {
   }
   void _navigateToCalculatorScreen(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => Calculator()));
+        //.push(MaterialPageRoute(builder: (context) => Calculator()));
+        .push(MaterialPageRoute(builder: (context) => BinaryCalc()));
+
   }
   void _navigateToShopScreen(BuildContext context) {
     Navigator.of(context)
@@ -195,6 +198,8 @@ class _LoginPageState extends State<LoginPage> {
         .push(MaterialPageRoute(builder: (context) => MainPage()));
   }
 }
+
+
 
 class Calculator extends StatefulWidget {
   @override
