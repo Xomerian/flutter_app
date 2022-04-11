@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({Key? key,required this.username, required this.password}) : super(key: key);
+  final String username;
+  final String password;
   final String title = 'Flutter Project';
   @override
   State<MainPage> createState() => _MainState();
@@ -42,7 +44,6 @@ class MainPage extends StatefulWidget {
 
 class _MainState extends State<MainPage> {
   int _selectedPage = 0;
-
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +54,10 @@ class _MainState extends State<MainPage> {
           onPressed: () {_navigateToLoginScreen(context);},
           icon : Image.asset('img/logo_flutter.png'),
         ),
+      ),
+      body:AlertDialog(
+        content:
+        Text(_Text(widget.username,widget.password)),
       ),
       bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
@@ -79,6 +84,12 @@ class _MainState extends State<MainPage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
 
     );
+  }
+
+  String _Text(String user, String pass) {
+    if (user == '') {
+      return ('Welcome, you are not connected please try again later');
+    }else return ('Welcome '+user+', your password is '+pass);
   }
 
   void _onItemTapped(int index) {
@@ -174,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    _navigateToNextScreen(context);
+                    _navigateToNextScreen(context,'','');
                   },
                   child: const Text(
                     'Forgot Password',
@@ -195,16 +206,16 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         print(nameController.text);
                         print(passwordController.text);
-                        _navigateToNextScreen(context);
+                        _navigateToNextScreen(context,nameController.text,passwordController.text);
                       },
                     ))
               ],
             )));
   }
 
-  void _navigateToNextScreen(BuildContext context) {
+  void _navigateToNextScreen(BuildContext context,user,pass) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => MainPage()));
+        .push(MaterialPageRoute(builder: (context) => MainPage(username: user,password: pass)));
   }
 }
 
