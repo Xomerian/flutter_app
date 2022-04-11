@@ -62,8 +62,12 @@ class _MainState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
             icon: Icon(Icons.add_chart),
-            label: 'Calculator',
+            label: 'Binary Calculator',
             ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.add),
+                label: 'Calculator',
+              ),
             BottomNavigationBarItem(
             icon: Icon(Icons.shop),
             label: 'Shop',
@@ -82,7 +86,8 @@ class _MainState extends State<MainPage> {
       _selectedPage = index;
     });
     if (index==0) _navigateToAlertScreen(context);
-    else if(index==1) _navigateToCalculatorScreen(context);
+    else if(index==1) _navigateToBinaryCalculatorScreen(context);
+    else if(index==2) _navigateToCalculatorScreen(context);
     else _navigateToShopScreen(context);
   }
   void _navigateToLoginScreen(BuildContext context) {
@@ -93,11 +98,15 @@ class _MainState extends State<MainPage> {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => AlertPage()));
   }
-  void _navigateToCalculatorScreen(BuildContext context) {
+  void _navigateToBinaryCalculatorScreen(BuildContext context) {
     Navigator.of(context)
         //.push(MaterialPageRoute(builder: (context) => Calculator()));
         .push(MaterialPageRoute(builder: (context) => BinaryCalc()));
-
+  }
+  void _navigateToCalculatorScreen(BuildContext context) {
+    Navigator.of(context)
+    //.push(MaterialPageRoute(builder: (context) => Calculator()));
+        .push(MaterialPageRoute(builder: (context) => Calculator()));
   }
   void _navigateToShopScreen(BuildContext context) {
     Navigator.of(context)
