@@ -65,6 +65,13 @@ class _LoginPageState extends State<LoginPage> {
                     'Forgot Password',
                   ),
                 ),
+                /*Container(
+                  height: 50,
+                  alignment: Alignment.centerRight
+                    ,
+                  child: const Text(
+                    'hehehehe')
+                  ),*/
                 Container(
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -75,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                         print(passwordController.text);
                         _navigateToNextScreen(context,nameController.text,passwordController.text);
                       },
-                    )),
+                    ))
               ],
             )));
   }
