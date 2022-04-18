@@ -217,6 +217,7 @@ class _CalculatorState extends State<Calculator> {
                 ],
               ),
             ),
+<<<<<<< Updated upstream
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -235,6 +236,19 @@ class _CalculatorState extends State<Calculator> {
                 calcbutton('9',Colors.grey,Colors.white),
                 calcbutton('x',Colors.amber,Colors.white),
               ],
+=======
+            BottomNavigationBarItem(
+            icon: Icon(Icons.add_chart, color : Colors.black),
+            label: 'Binary Calculator',
+            ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.add, color : Colors.black),
+                label: 'Calculator',
+              ),
+            BottomNavigationBarItem(
+            icon: Icon(Icons.shop,color : Colors.black),
+            label: 'Shop',
+>>>>>>> Stashed changes
             ),
             SizedBox(height: 10,),
             Row(
