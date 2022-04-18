@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                         print(passwordController.text);
                         _navigateToNextScreen(context,nameController.text,passwordController.text);
                       },
-                    ))
+                    )),
               ],
             )));
   }

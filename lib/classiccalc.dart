@@ -49,7 +49,7 @@ class _CalculatorState extends State<Calculator> {
                     child: Text('$text',
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 100,
                       ),
                     ),
