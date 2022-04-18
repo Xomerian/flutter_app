@@ -66,19 +66,19 @@ class _MainState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-            icon: Icon(Icons.warning),
+            icon: Icon(Icons.warning,color : Colors.black),
             label: 'Alert',
             ),
             BottomNavigationBarItem(
-            icon: Icon(Icons.add_chart),
+            icon: Icon(Icons.add_chart, color : Colors.black),
             label: 'Binary Calculator',
             ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.add),
+                icon: Icon(Icons.add,color : Colors.black),
                 label: 'Calculator',
               ),
             BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
+            icon: Icon(Icons.shop,color : Colors.black),
             label: 'Shop',
             ),
             ],
